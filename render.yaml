@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: arschmallows
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && cd client && npm install && npm run build && cd ../server && npm install
+    startCommand: node server/src/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATA_DIR
+        value: /tmp/arschmallows-data

@@ -1,0 +1,81 @@
+.game-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: rgba(10,3,24,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  z-index: 100;
+  position: sticky;
+  top: 0;
+}
+
+.topbar-left { display: flex; align-items: center; gap: 8px; }
+.topbar-logo { font-size: 1.4rem; }
+.topbar-title { font-family: var(--font-display); font-size: 1.1rem; color: var(--accent-pink); }
+
+.topbar-right { display: flex; align-items: center; gap: 4px; }
+
+.topbar-btn {
+  padding: 6px 10px !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+}
+
+.conn-indicator {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+.conn-indicator.offline { color: var(--accent-red); background: rgba(255,71,87,0.12); animation: pulse 1s ease infinite; }
+
+.game-page-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reconnecting overlay */
+.reconnecting-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  animation: fadeIn 0.3s ease;
+}
+
+.reconnecting-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-glow);
+}
+
+.reconnecting-spinner {
+  font-size: 3rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}

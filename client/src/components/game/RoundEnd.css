@@ -1,0 +1,129 @@
+.round-end-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,3,24,0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  padding: 16px;
+  animation: fadeIn 0.3s ease;
+}
+
+.round-end-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), var(--shadow-glow);
+  animation: slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.round-end-header { text-align: center; }
+.round-end-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--accent-yellow);
+}
+.round-end-sub { color: var(--text-muted); margin-top: 4px; font-weight: 700; }
+
+.round-scores { display: flex; flex-direction: column; gap: 8px; }
+
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.score-row.winner-row {
+  background: rgba(255,217,74,0.1);
+  border-color: rgba(255,217,74,0.4);
+}
+
+.score-row.penalized-row {
+  background: rgba(255,71,87,0.08);
+  border-color: rgba(255,71,87,0.3);
+}
+
+.score-rank {
+  font-size: 1.1rem;
+  min-width: 28px;
+  text-align: center;
+}
+
+.score-name {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.sname {
+  font-weight: 800;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.penalty-tag {
+  font-size: 0.65rem;
+  color: var(--accent-red);
+  font-weight: 800;
+}
+
+.score-values {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.round-score {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--accent-orange);
+}
+.round-score.penalized { color: var(--accent-red); }
+
+.original-score {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.total-score {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.arschmallows-fail {
+  background: rgba(255,71,87,0.1);
+  border: 1px solid rgba(255,71,87,0.3);
+  color: var(--accent-red);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.waiting-host {
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 700;
+  animation: pulse 1.5s ease infinite;
+}

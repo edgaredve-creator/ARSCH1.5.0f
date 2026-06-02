@@ -1,0 +1,132 @@
+.player-area {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 1.2vw, 8px);
+  padding: clamp(6px, 1.5vw, 10px) clamp(8px, 2vw, 12px);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.player-area.active {
+  border-color: var(--accent-yellow);
+  background: rgba(255,217,74,0.07);
+  box-shadow: 0 0 14px rgba(255,217,74,0.2);
+}
+.player-area.me { border-color: rgba(255,110,180,0.25); background: rgba(255,110,180,0.05); }
+.player-area.me.active {
+  border-color: var(--accent-pink);
+  background: rgba(255,110,180,0.1);
+  box-shadow: 0 0 18px rgba(255,110,180,0.3);
+  animation: glow 1.5s ease infinite;
+}
+
+.player-info { display: flex; align-items: center; gap: 7px; }
+.player-avatar-wrap { position: relative; flex-shrink: 0; }
+.active-indicator { position: absolute; top: -4px; right: -4px; font-size: 11px; animation: bounce 0.8s ease infinite; }
+.disconnected-indicator { position: absolute; top: -4px; right: -4px; font-size: 11px; }
+.player-name-score { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.player-name {
+  font-weight: 800;
+  font-size: clamp(0.7rem, 2.2vw, 0.85rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: clamp(70px, 18vw, 130px);
+}
+.player-score { font-size: clamp(0.62rem, 1.8vw, 0.75rem); color: var(--text-secondary); font-weight: 700; }
+
+.player-cards { display: flex; flex-wrap: wrap; gap: clamp(2px, 0.8vw, 4px); align-items: flex-end; }
+
+/* ── Card overlay states ──────────────────────────────────────────────────── */
+.card-wrap { border-radius: 12px; transition: all 0.18s ease; position: relative; flex-shrink: 0; }
+
+/* Selected (yellow outline, lifted) */
+.card-selected-glow {
+  outline: 3px solid var(--accent-yellow);
+  outline-offset: 2px;
+  transform: translateY(-8px) scale(1.08) !important;
+  z-index: 20;
+  border-radius: 12px;
+}
+
+/* SPY — teal pulse */
+.card-spy-glow {
+  border-radius: 12px;
+  box-shadow: 0 0 0 3px var(--accent-teal), 0 0 20px rgba(64,224,208,0.7);
+  animation: spyPulse 0.7s ease infinite;
+  z-index: 15;
+}
+
+/* SWAP anim — purple pulse */
+.card-swap-glow {
+  border-radius: 12px;
+  box-shadow: 0 0 0 3px #a78bfa, 0 0 20px rgba(167,139,250,0.7);
+  animation: swapPulse 0.7s ease infinite;
+  z-index: 15;
+}
+
+/* Swap landed — bright yellow, bounces in, stays 2.5s */
+.card-swap-landed {
+  border-radius: 12px;
+  box-shadow: 0 0 0 3px var(--accent-yellow), 0 0 28px rgba(255,217,74,0.9);
+  animation: swapLanded 2.5s ease forwards;
+  z-index: 25;
+}
+
+/* Overlay icons */
+.card-overlay-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 900;
+  line-height: 1;
+}
+.spy-eye {
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  filter: drop-shadow(0 0 8px rgba(64,224,208,0.9));
+  animation: spyPulse 0.7s ease infinite;
+}
+.swap-label {
+  font-size: clamp(0.55rem, 1.8vw, 0.7rem);
+  background: rgba(167,139,250,0.92);
+  color: #fff;
+  padding: 3px 6px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  animation: swapPulse 0.7s ease infinite;
+}
+.swap-landed-label {
+  font-size: clamp(0.55rem, 1.8vw, 0.65rem);
+  background: rgba(255,217,74,0.95);
+  color: #1a0a2e;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+/* ── Keyframes ───────────────────────────────────────────────────────────── */
+@keyframes spyPulse {
+  0%,100% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+  50% { opacity: 0.7; transform: translate(-50%,-50%) scale(1.18); }
+}
+@keyframes swapPulse {
+  0%,100% { box-shadow: 0 0 0 3px #a78bfa, 0 0 20px rgba(167,139,250,0.7); }
+  50% { box-shadow: 0 0 0 3px #a78bfa, 0 0 32px rgba(167,139,250,1); }
+}
+@keyframes swapLanded {
+  0%   { transform: scale(0.7) translateY(-20px); box-shadow: 0 0 0 4px var(--accent-yellow), 0 0 36px rgba(255,217,74,1); opacity: 0.6; }
+  15%  { transform: scale(1.18) translateY(0);    box-shadow: 0 0 0 4px var(--accent-yellow), 0 0 40px rgba(255,217,74,1); opacity: 1; }
+  40%  { transform: scale(1.08) translateY(-4px); }
+  60%  { transform: scale(1.04) translateY(0);    box-shadow: 0 0 0 3px var(--accent-yellow), 0 0 28px rgba(255,217,74,0.8); }
+  100% { transform: scale(1) translateY(0);       box-shadow: none; opacity: 1; }
+}

@@ -1,0 +1,95 @@
+.gameover-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,3,24,0.92);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 400;
+  padding: 16px;
+  animation: fadeIn 0.4s ease;
+}
+
+.gameover-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.7), 0 0 40px rgba(255,110,180,0.2);
+  animation: slideUp 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  max-height: 90dvh;
+  overflow-y: auto;
+}
+
+.confetti-row {
+  text-align: center;
+  font-size: 1.8rem;
+  animation: bounce 0.8s ease infinite;
+}
+
+.gameover-title {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  color: var(--accent-yellow);
+  text-align: center;
+}
+
+.winner-highlight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255,217,74,0.1);
+  border: 2px solid rgba(255,217,74,0.4);
+  border-radius: var(--radius-xl);
+  padding: 16px 20px;
+  animation: glow 2s ease infinite;
+}
+
+.winner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.winner-label { font-size: 0.8rem; color: var(--accent-yellow); font-weight: 800; }
+.winner-name { font-family: var(--font-display); font-size: 1.6rem; color: var(--text-primary); }
+.winner-score { font-size: 0.9rem; color: var(--text-secondary); font-weight: 700; }
+
+.final-scores { display: flex; flex-direction: column; gap: 8px; }
+.final-title { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 4px; }
+
+.final-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+}
+.final-row.champion { background: rgba(255,217,74,0.08); border: 1px solid rgba(255,217,74,0.2); }
+
+.final-rank { min-width: 28px; font-size: 1rem; }
+.final-name { flex: 1; font-weight: 800; font-size: 0.85rem; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.final-rounds { display: flex; gap: 3px; flex-wrap: wrap; }
+.round-chip {
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+.final-total {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--accent-orange);
+  min-width: 36px;
+  text-align: right;
+}
+
+.gameover-actions { display: flex; flex-direction: column; gap: 10px; }
